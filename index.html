@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IndiaEdu Academy — Padhai Jo Result Deti Hai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17223B;
+    --indigo:#1B2A4A;
+    --indigo-deep:#0F1930;
+    --paper:#FBF5E7;
+    --paper-dim:#F3EAD3;
+    --marigold:#E8A13B;
+    --marigold-deep:#C7811F;
+    --peepal:#3C6E47;
+    --peepal-light:#5C9468;
+    --white:#FFFFFF;
+    --line: rgba(23,34,59,0.14);
+    --shadow: 0 20px 50px rgba(15,25,48,0.16);
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:12px;
+    font-weight:500;
+    color:var(--peepal);
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;height:1px;background:var(--marigold-deep);
+  }
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;color:var(--ink);letter-spacing:-0.01em;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:15px 30px;
+    border-radius:3px;
+    font-weight:600;
+    font-size:15px;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--marigold);
+    color:var(--indigo-deep);
+    box-shadow:0 10px 24px rgba(232,161,59,0.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(232,161,59,0.45);}
+  .btn-ghost{
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .btn-light{
+    border:1.5px solid rgba(251,245,231,0.5);
+    color:var(--paper);
+  }
+  .btn-light:hover{background:var(--paper);color:var(--indigo-deep);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(251,245,231,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 0;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:var(--font-display);font-weight:700;font-size:21px;
+  }
+  .logo .mark{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--indigo);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--marigold);font-family:var(--font-mono);font-size:14px;font-weight:700;
+    border:2px solid var(--marigold);
+  }
+  .nav-links{display:flex;gap:34px;align-items:center;}
+  .nav-links a{
+    font-size:14.5px;font-weight:500;color:var(--ink);
+    position:relative;padding:4px 0;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--marigold-deep);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:18px;}
+  .nav-cta .btn{padding:11px 22px;font-size:14px;}
+  .burger{display:none;flex-direction:column;gap:5px;width:26px;}
+  .burger span{height:2px;background:var(--ink);border-radius:2px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:76px 0 90px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 88% 8%, rgba(232,161,59,0.16), transparent 45%),
+      radial-gradient(circle at 4% 90%, rgba(60,110,71,0.12), transparent 45%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;
+    gap:56px;align-items:center;
+    position:relative;
+  }
+  .hero h1{
+    font-size:clamp(38px, 4.6vw, 60px);
+    line-height:1.06;
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--marigold-deep);
+    position:relative;
+  }
+  .hero p.lead{
+    font-size:17.5px;color:rgba(23,34,59,0.72);
+    max-width:480px;margin-bottom:34px;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:38px;}
+  .hero-trust{display:flex;gap:28px;flex-wrap:wrap;}
+  .hero-trust div{font-family:var(--font-mono);}
+  .hero-trust .n{font-size:22px;font-weight:700;color:var(--indigo);}
+  .hero-trust .l{font-size:11.5px;color:rgba(23,34,59,0.55);text-transform:uppercase;letter-spacing:.06em;}
+
+  /* Signature: result card */
+  .result-card-wrap{
+    position:relative;
+    display:flex;justify-content:center;
+  }
+  .result-card{
+    width:100%;max-width:400px;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:6px;
+    box-shadow:var(--shadow);
+    padding:26px 26px 22px;
+    transform:rotate(3deg);
+    position:relative;
+    animation:float 6s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{transform:rotate(3deg) translateY(0px);}
+    50%{transform:rotate(2deg) translateY(-10px);}
+  }
+  .result-card .rc-head{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    border-bottom:2px dashed var(--line);
+    padding-bottom:14px;margin-bottom:14px;
+  }
+  .result-card .rc-head .rc-title{
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(23,34,59,.5);
+  }
+  .result-card .rc-head h4{font-family:var(--font-display);font-size:19px;margin-top:4px;}
+  .rc-roll{font-family:var(--font-mono);font-size:11px;color:rgba(23,34,59,.5);text-align:right;}
+  .rc-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:9px 0;border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .rc-row:last-of-type{border-bottom:none;}
+  .rc-row .subj{color:rgba(23,34,59,.75);}
+  .rc-row .marks{font-family:var(--font-mono);font-weight:700;color:var(--peepal);}
+  .rc-total{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:14px;padding-top:14px;border-top:2px solid var(--ink);
+    font-family:var(--font-mono);font-weight:700;font-size:16px;
+  }
+  .stamp{
+    position:absolute;top:-18px;right:-14px;
+    width:78px;height:78px;border-radius:50%;
+    background:var(--marigold);
+    display:flex;align-items:center;justify-content:center;
+    transform:rotate(-16deg);
+    box-shadow:0 8px 20px rgba(232,161,59,.5);
+    border:2px dashed var(--indigo-deep);
+  }
+  .stamp span{
+    font-family:var(--font-mono);font-size:11px;font-weight:700;
+    text-transform:uppercase;color:var(--indigo-deep);text-align:center;line-height:1.2;letter-spacing:.03em;
+  }
+
+  /* ---------- STATS STRIP ---------- */
+  .stats{
+    background:var(--indigo);
+    color:var(--paper);
+    padding:36px 0;
+  }
+  .stats .wrap{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  }
+  .stat-item{text-align:center;border-right:1px solid rgba(251,245,231,0.14);}
+  .stat-item:last-child{border-right:none;}
+  .stat-item .num{
+    font-family:var(--font-mono);font-size:clamp(24px,3vw,34px);font-weight:700;color:var(--marigold);
+  }
+  .stat-item .lab{font-size:12.5px;color:rgba(251,245,231,0.65);margin-top:4px;letter-spacing:.02em;}
+
+  /* ---------- SECTION shared ---------- */
+  section{padding:96px 0;}
+  .sec-head{max-width:620px;margin-bottom:52px;}
+  .sec-head h2{font-size:clamp(28px,3.4vw,40px);margin-top:14px;line-height:1.14;}
+  .sec-head p{color:rgba(23,34,59,.68);margin-top:14px;font-size:16px;}
+
+  /* ---------- COURSES ---------- */
+  .courses-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  .course-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:30px 26px;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .course-card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow);
+    border-color:transparent;
+  }
+  .course-card .tag{
+    font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--marigold-deep);font-weight:700;
+  }
+  .course-card h3{font-size:21px;margin:10px 0 8px;}
+  .course-card p{font-size:14.5px;color:rgba(23,34,59,.65);margin-bottom:18px;}
+  .course-card .meta{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:16px;border-top:1px solid var(--line);
+    font-size:13px;color:rgba(23,34,59,.55);
+  }
+  .course-card .meta b{color:var(--peepal);font-family:var(--font-mono);}
+
+  /* ---------- WHY US ---------- */
+  .why{background:var(--paper-dim);}
+  .why-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:26px;
+  }
+  .why-item .icon{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--indigo);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+  }
+  .why-item .icon svg{width:24px;height:24px;stroke:var(--marigold);}
+  .why-item h3{font-size:18px;margin-bottom:8px;}
+  .why-item p{font-size:14px;color:rgba(23,34,59,.65);}
+
+  /* ---------- RESULTS / TOPPERS ---------- */
+  .toppers-scroll{
+    display:flex;gap:20px;overflow-x:auto;padding-bottom:14px;
+    scroll-snap-type:x mandatory;
+  }
+  .toppers-scroll::-webkit-scrollbar{height:6px;}
+  .toppers-scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
+  .topper-card{
+    flex:0 0 240px;
+    scroll-snap-align:start;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:22px;
+    text-align:center;
+  }
+  .topper-avatar{
+    width:64px;height:64px;border-radius:50%;
+    margin:0 auto 14px;
+    background:linear-gradient(135deg,var(--marigold),var(--peepal));
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-weight:700;color:var(--white);font-size:22px;
+  }
+  .topper-card h4{font-size:16px;margin-bottom:2px;}
+  .topper-card .exam{font-size:12.5px;color:rgba(23,34,59,.5);margin-bottom:10px;}
+  .topper-card .score{
+    font-family:var(--font-mono);font-weight:700;color:var(--peepal);font-size:19px;
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi{background:var(--indigo-deep);color:var(--paper);}
+  .testi .sec-head p{color:rgba(251,245,231,.6);}
+  .testi .sec-head h2{color:var(--paper);}
+  .testi .eyebrow{color:var(--marigold);}
+  .testi .eyebrow::before{background:var(--marigold);}
+  .testi-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  .testi-card{
+    background:rgba(251,245,231,0.05);
+    border:1px solid rgba(251,245,231,0.12);
+    border-radius:6px;padding:28px;
+  }
+  .testi-card .quote{font-size:15px;line-height:1.65;color:rgba(251,245,231,.85);margin-bottom:20px;}
+  .testi-card .who{display:flex;align-items:center;gap:12px;}
+  .testi-card .who-avatar{
+    width:40px;height:40px;border-radius:50%;background:var(--marigold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono);font-weight:700;color:var(--indigo-deep);font-size:14px;
+  }
+  .testi-card .who-name{font-size:14px;font-weight:600;}
+  .testi-card .who-role{font-size:12px;color:rgba(251,245,231,.5);}
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{
+    background:var(--marigold);
+    padding:64px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-band::before{
+    content:'';position:absolute;inset:0;
+    background:repeating-linear-gradient(115deg, rgba(23,34,59,0.05) 0 2px, transparent 2px 26px);
+  }
+  .cta-content{
+    display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;
+    position:relative;
+  }
+  .cta-content h2{font-size:clamp(26px,3vw,34px);color:var(--indigo-deep);max-width:520px;}
+  .cta-content .btn-primary{background:var(--indigo-deep);color:var(--paper);box-shadow:0 10px 24px rgba(15,25,48,.3);}
+  .cta-content .btn-primary:hover{background:var(--ink);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--indigo-deep);color:rgba(251,245,231,.7);padding:64px 0 28px;}
+  .foot-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;
+    padding-bottom:44px;border-bottom:1px solid rgba(251,245,231,.1);
+  }
+  .foot-brand .logo{color:var(--paper);}
+  .foot-brand p{font-size:14px;margin-top:14px;max-width:280px;color:rgba(251,245,231,.55);}
+  .foot-col h5{
+    font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--marigold);margin-bottom:16px;
+  }
+  .foot-col a{display:block;font-size:14px;margin-bottom:10px;color:rgba(251,245,231,.65);transition:color .2s;}
+  .foot-col a:hover{color:var(--paper);}
+  .foot-bottom{
+    display:flex;justify-content:space-between;align-items:center;padding-top:26px;
+    font-size:13px;color:rgba(251,245,231,.45);flex-wrap:wrap;gap:12px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .hero-grid{grid-template-columns:1fr;}
+    .result-card-wrap{margin-top:20px;}
+    .stats .wrap{grid-template-columns:repeat(2,1fr);row-gap:24px;}
+    .stat-item:nth-child(2){border-right:none;}
+    .courses-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .testi-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:32px;}
+  }
+  @media (max-width:600px){
+    section{padding:64px 0;}
+    .courses-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;}
+    .cta-content{flex-direction:column;align-items:flex-start;}
+    .hero-actions .btn{width:100%;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .result-card{animation:none;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="mark">IE</span> IndiaEdu Academy</div>
+    <ul class="nav-links">
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Book Free Demo</a>
+    </div>
+    <button class="burger" aria-label="menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Class 6 to 12 · Boards & Competitive Exams</div>
+      <h1>Learning that's built for the <em>result</em>, not just the syllabus.</h1>
+      <p class="lead">IndiaEdu Academy trains students for CBSE/UP Board exams, JEE and NEET with small batches, doubt-first teaching, and weekly test tracking — so progress is visible, not just promised.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Book a Free Demo Class</a>
+        <a href="#courses" class="btn btn-ghost">See Courses</a>
+      </div>
+      <div class="hero-trust">
+        <div><div class="n">4,200+</div><div class="l">Students Taught</div></div>
+        <div><div class="n">96%</div><div class="l">Pass Rate</div></div>
+        <div><div class="n">18</div><div class="l">Expert Faculty</div></div>
+        <div><div class="n">11 yrs</div><div class="l">In Ghazipur, UP</div></div>
+      </div>
+    </div>
+
+    <div class="result-card-wrap">
+      <div class="result-card">
+        <div class="stamp"><span>Result<br>Declared</span></div>
+        <div class="rc-head">
+          <div>
+            <div class="rc-title">IndiaEdu Academy</div>
+            <h4>Progress Report</h4>
+          </div>
+          <div class="rc-roll">Batch: JEE-2027<br>ID: IEA-0442</div>
+        </div>
+        <div class="rc-row"><span class="subj">Physics</span><span class="marks">94 / 100</span></div>
+        <div class="rc-row"><span class="subj">Chemistry</span><span class="marks">89 / 100</span></div>
+        <div class="rc-row"><span class="subj">Mathematics</span><span class="marks">97 / 100</span></div>
+        <div class="rc-row"><span class="subj">English</span><span class="marks">88 / 100</span></div>
+        <div class="rc-total"><span>Overall</span><span>92.0%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat-item"><div class="num">4,200+</div><div class="lab">Students Mentored</div></div>
+    <div class="stat-item"><div class="num">340+</div><div class="lab">JEE / NEET Selections</div></div>
+    <div class="stat-item"><div class="num">18</div><div class="lab">Full-Time Faculty</div></div>
+    <div class="stat-item"><div class="num">96%</div><div class="lab">Board Pass Rate</div></div>
+  </div>
+</div>
+
+<section id="courses">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Programs</div>
+      <h2>A course for every class</h2>
+      <p>From foundation building in middle school to intensive exam-cracking in senior years — pick the track that matches where your child is right now.</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card">
+        <div class="tag">Class 6–8</div>
+        <h3>Foundation Builder</h3>
+        <p>Strong basics in Maths & Science with concept clarity, so higher classes feel easy, not scary.</p>
+        <div class="meta"><span>3 sessions / week</span><b>₹800/mo</b></div>
+      </div>
+      <div class="course-card">
+        <div class="tag">Class 9–10</div>
+        <h3>Board Mastery</h3>
+        <p>Complete CBSE/UP Board coverage with chapter tests, sample papers, and one-on-one doubt hours.</p>
+        <div class="meta"><span>5 sessions / week</span><b>₹1,200/mo</b></div>
+      </div>
+      <div class="course-card">
+        <div class="tag">Class 11–12</div>
+        <h3>Science Stream Core</h3>
+        <p>PCM/PCB taught to board depth, with problem-solving speed built for competitive exams too.</p>
+        <div class="meta"><span>6 sessions / week</span><b>₹1,800/mo</b></div>
+      </div>
+      <div class="course-card">
+        <div class="tag">Class 11–12</div>
+        <h3>JEE Achiever</h3>
+        <p>Physics, Chemistry, Maths at JEE Main + Advanced level with weekly full-syllabus mock tests.</p>
+        <div class="meta"><span>Daily practice</span><b>₹2,500/mo</b></div>
+      </div>
+      <div class="course-card">
+        <div class="tag">Class 11–12</div>
+        <h3>NEET Achiever</h3>
+        <p>Biology-heavy curriculum with NCERT-first teaching and rank-focused test series.</p>
+        <div class="meta"><span>Daily practice</span><b>₹2,500/mo</b></div>
+      </div>
+      <div class="course-card">
+        <div class="tag">All Classes</div>
+        <h3>Crash & Revision</h3>
+        <p>Short, intensive revision batches before boards or entrance exams — built for the final sprint.</p>
+        <div class="meta"><span>4–8 weeks</span><b>₹1,500 total</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Why Parents Choose Us</div>
+      <h2>Teaching that tracks progress, not just attendance</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v14M12 17l-4-4M12 17l4-4"/><path d="M4 21h16"/></svg></div>
+        <h3>Small Batches</h3>
+        <p>Max 15 students per batch, so every child gets asked questions, not just answers them.</p>
+      </div>
+      <div class="why-item">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg></div>
+        <h3>Weekly Tests</h3>
+        <p>Every Saturday test with a scorecard sent to parents — no surprises at report card time.</p>
+      </div>
+      <div class="why-item">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18M3 12h18M3 19h11"/></svg></div>
+        <h3>Doubt-First Method</h3>
+        <p>Daily 30-minute doubt window before every class starts — nothing gets carried forward unresolved.</p>
+      </div>
+      <div class="why-item">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg></div>
+        <h3>Parent Dashboard</h3>
+        <p>A simple WhatsApp update after every test — attendance, marks, and what to revise at home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Toppers Board</div>
+      <h2>Results our students actually brought home</h2>
+      <p>A few of the scorecards our batches have earned in the last two sessions.</p>
+    </div>
+    <div class="toppers-scroll">
+      <div class="topper-card"><div class="topper-avatar">RK</div><h4>Rahul Kumar</h4><div class="exam">UP Board, Class 12</div><div class="score">96.4%</div></div>
+      <div class="topper-card"><div class="topper-avatar">PS</div><h4>Priya Singh</h4><div class="exam">NEET 2026</div><div class="score">AIR 1,842</div></div>
+      <div class="topper-card"><div class="topper-avatar">AV</div><h4>Ankit Verma</h4><div class="exam">JEE Main 2026</div><div class="score">99.1 %ile</div></div>
+      <div class="topper-card"><div class="topper-avatar">SG</div><h4>Sneha Gupta</h4><div class="exam">CBSE, Class 10</div><div class="score">97.8%</div></div>
+      <div class="topper-card"><div class="topper-avatar">MY</div><h4>Mohit Yadav</h4><div class="exam">UP Board, Class 10</div><div class="score">95.2%</div></div>
+      <div class="topper-card"><div class="topper-avatar">KT</div><h4>Kavya Tiwari</h4><div class="exam">NEET 2026</div><div class="score">AIR 3,105</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="testi">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Parents & Students Say</div>
+      <h2>Trusted by families across the district</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="quote">"The weekly test scorecard comes straight to WhatsApp — I know exactly where my son is stuck, without waiting for the tuition term to end."</p>
+        <div class="who"><div class="who-avatar">SM</div><div><div class="who-name">Suresh Mishra</div><div class="who-role">Parent, Class 10 student</div></div></div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">"Because of the doubt session, I'm never left behind in class. Teachers explain every concept again and again until it actually clicks."</p>
+        <div class="who"><div class="who-avatar">NP</div><div><div class="who-name">Neha Pandey</div><div class="who-role">Student, JEE Achiever batch</div></div></div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">"Because the batches are small, the teachers know every student by name. My son's confidence has grown so much over the past year."</p>
+        <div class="who"><div class="who-avatar">RD</div><div><div class="who-name">Rajesh Dubey</div><div class="who-role">Parent, Foundation Builder</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="wrap cta-content">
+    <h2>Book your seat with a free demo class before you decide.</h2>
+    <a href="tel:+911234567890" class="btn btn-primary">Call to Book a Demo</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo"><span class="mark">IE</span> IndiaEdu Academy</div>
+        <p>Coaching for Class 6–12, Board exams, JEE and NEET — based in Ghazipur, Uttar Pradesh, teaching students across the district for 11 years.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Programs</h5>
+        <a href="#courses">Foundation Builder</a>
+        <a href="#courses">Board Mastery</a>
+        <a href="#courses">JEE Achiever</a>
+        <a href="#courses">NEET Achiever</a>
+      </div>
+      <div class="foot-col">
+        <h5>Academy</h5>
+        <a href="#why">Why Us</a>
+        <a href="#results">Results</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <a href="tel:+911234567890">+91 12345 67890</a>
+        <a href="mailto:hello@indiaeduacademy.in">hello@indiaeduacademy.in</a>
+        <a href="#">Ghazipur, Uttar Pradesh</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 IndiaEdu Academy. All rights reserved.</span>
+      <span>Made with care for every roll number.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
