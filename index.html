@@ -5,451 +5,399 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IndiaEdu Academy — Complete Learning at Your Fingertips</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#17223B;
-    --indigo:#1B2A4A;
-    --indigo-deep:#0F1930;
-    --paper:#FBF5E7;
-    --paper-dim:#F3EAD3;
-    --marigold:#E8A13B;
-    --marigold-deep:#C7811F;
-    --peepal:#3C6E47;
-    --peepal-light:#5C9468;
-    --white:#FFFFFF;
-    --line: rgba(23,34,59,0.14);
-    --shadow: 0 20px 50px rgba(15,25,48,0.16);
-    --font-display: 'Fraunces', serif;
-    --font-body: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --primary:#0B3D91;
+    --primary-deep:#072b6b;
+    --primary-soft:#EAF1FC;
+    --accent:#F7941D;
+    --accent-deep:#D97706;
+    --green:#1E824C;
+    --green-soft:#E7F5EC;
+    --ink:#16233D;
+    --muted:#5B6B85;
+    --line:rgba(22,35,61,0.12);
+    --bg:#FFFFFF;
+    --bg-soft:#F4F7FC;
+    --shadow:0 18px 44px rgba(11,61,145,0.12);
+    --font-head:'Poppins', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --radius:14px;
   }
-
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     font-family:var(--font-body);
-    background:var(--paper);
+    background:var(--bg);
     color:var(--ink);
-    line-height:1.5;
+    line-height:1.55;
     overflow-x:hidden;
   }
   img,svg{display:block;max-width:100%;}
   a{color:inherit;text-decoration:none;}
   ul{list-style:none;}
   button{font-family:inherit;cursor:pointer;border:none;background:none;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;color:var(--ink);}
   .eyebrow{
-    font-family:var(--font-mono);
-    text-transform:uppercase;
-    letter-spacing:.14em;
-    font-size:12px;
-    font-weight:500;
-    color:var(--peepal);
-    display:flex;align-items:center;gap:10px;
+    font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--accent-deep);display:flex;align-items:center;gap:8px;
   }
-  .eyebrow::before{
-    content:'';
-    width:22px;height:1px;background:var(--marigold-deep);
-  }
-  h1,h2,h3{font-family:var(--font-display);font-weight:600;color:var(--ink);letter-spacing:-0.01em;}
+  .eyebrow::before{content:'';width:20px;height:3px;border-radius:2px;background:var(--accent);}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    padding:15px 30px;
-    border-radius:3px;
-    font-weight:600;
-    font-size:15px;
-    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
-    white-space:nowrap;
+    padding:13px 26px;border-radius:8px;font-weight:600;font-size:14.5px;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
   }
-  .btn-primary{
-    background:var(--marigold);
-    color:var(--indigo-deep);
-    box-shadow:0 10px 24px rgba(232,161,59,0.35);
-  }
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(232,161,59,0.45);}
-  .btn-ghost{
-    border:1.5px solid var(--ink);
-    color:var(--ink);
-  }
-  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
-  .btn-light{
-    border:1.5px solid rgba(251,245,231,0.5);
-    color:var(--paper);
-  }
-  .btn-light:hover{background:var(--paper);color:var(--indigo-deep);}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 22px rgba(247,148,29,.35);}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--accent-deep);}
+  .btn-outline{border:1.5px solid var(--primary);color:var(--primary);}
+  .btn-outline:hover{background:var(--primary);color:#fff;}
+  .btn-white{background:#fff;color:var(--primary);}
+  .btn-white:hover{background:var(--primary-soft);}
 
-  /* ---------- NAV ---------- */
+  /* ---------- UTILITY BAR ---------- */
+  .util-bar{
+    background:var(--primary-deep);color:#cfe0ff;font-size:12.5px;
+  }
+  .util-bar .wrap{display:flex;justify-content:space-between;align-items:center;height:36px;}
+  .util-left{display:flex;align-items:center;gap:8px;}
+  .util-left::before{content:'🇮🇳';font-size:14px;}
+  .util-right{display:flex;align-items:center;gap:16px;}
+  .text-size{display:flex;align-items:center;gap:4px;}
+  .text-size button{
+    width:22px;height:22px;border-radius:4px;background:rgba(255,255,255,.12);
+    color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;
+  }
+  .text-size button:hover{background:rgba(255,255,255,.25);}
+  .util-right a:hover{text-decoration:underline;}
+
+  /* ---------- HEADER ---------- */
   header{
-    position:sticky;top:0;z-index:100;
-    background:rgba(251,245,231,0.86);
-    backdrop-filter:blur(10px);
+    position:sticky;top:0;z-index:100;background:#fff;
     border-bottom:1px solid var(--line);
   }
-  nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:18px 0;
-  }
-  .logo{
-    display:flex;align-items:center;gap:10px;
-    font-family:var(--font-display);font-weight:700;font-size:21px;
-  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--font-head);font-weight:800;font-size:19px;color:var(--primary);}
   .logo .mark{
-    width:34px;height:34px;border-radius:50%;
-    background:var(--indigo);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--marigold);font-family:var(--font-mono);font-size:14px;font-weight:700;
-    border:2px solid var(--marigold);
+    width:38px;height:38px;border-radius:8px;background:var(--primary);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;
   }
-  .nav-links{display:flex;gap:34px;align-items:center;}
-  .nav-links a{
-    font-size:14.5px;font-weight:500;color:var(--ink);
-    position:relative;padding:4px 0;
-  }
-  .nav-links a::after{
-    content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--marigold-deep);
-    transition:width .25s ease;
-  }
+  .nav-links{display:flex;gap:28px;align-items:center;}
+  .nav-links a{font-size:14px;font-weight:600;color:var(--ink);position:relative;padding:6px 0;}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .2s;}
   .nav-links a:hover::after{width:100%;}
-  .nav-cta{display:flex;align-items:center;gap:18px;}
-  .nav-cta .btn{padding:11px 22px;font-size:14px;}
-  .burger{display:none;flex-direction:column;gap:5px;width:26px;}
+  .nav-cta{display:flex;align-items:center;gap:12px;}
+  .nav-cta .btn{padding:10px 20px;font-size:13.5px;}
+  .burger{display:none;flex-direction:column;gap:5px;width:24px;}
   .burger span{height:2px;background:var(--ink);border-radius:2px;}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    padding:76px 0 90px;
-    overflow:hidden;
+  /* ---------- QUICK ACCESS ---------- */
+  .quick{background:var(--bg-soft);padding:44px 0 52px;}
+  .quick-head{text-align:center;max-width:640px;margin:0 auto 30px;}
+  .quick-head h1{font-size:clamp(24px,3vw,32px);margin-top:10px;line-height:1.25;}
+  .quick-head p{color:var(--muted);margin-top:10px;font-size:15px;}
+  .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .quick-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 20px;text-align:center;transition:transform .2s, box-shadow .2s;
   }
-  .hero::before{
-    content:'';
-    position:absolute; inset:0;
-    background:
-      radial-gradient(circle at 88% 8%, rgba(232,161,59,0.16), transparent 45%),
-      radial-gradient(circle at 4% 90%, rgba(60,110,71,0.12), transparent 45%);
-    pointer-events:none;
+  .quick-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+  .quick-card .ic{
+    width:56px;height:56px;border-radius:50%;margin:0 auto 14px;
+    display:flex;align-items:center;justify-content:center;font-size:26px;
   }
-  .hero-grid{
-    display:grid;grid-template-columns:1.05fr .95fr;
-    gap:56px;align-items:center;
-    position:relative;
-  }
-  .hero h1{
-    font-size:clamp(38px, 4.6vw, 60px);
-    line-height:1.06;
-    margin-bottom:22px;
-  }
-  .hero h1 em{
-    font-style:italic;color:var(--marigold-deep);
-    position:relative;
-  }
-  .hero p.lead{
-    font-size:17.5px;color:rgba(23,34,59,0.72);
-    max-width:480px;margin-bottom:34px;
-  }
-  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:38px;}
-  .hero-trust{display:flex;gap:28px;flex-wrap:wrap;}
-  .hero-trust div{font-family:var(--font-mono);}
-  .hero-trust .n{font-size:22px;font-weight:700;color:var(--indigo);}
-  .hero-trust .l{font-size:11.5px;color:rgba(23,34,59,0.55);text-transform:uppercase;letter-spacing:.06em;}
+  .quick-card h3{font-size:16px;margin-bottom:6px;}
+  .quick-card a{font-size:13px;color:var(--primary);font-weight:600;}
+  .quick-card a:hover{text-decoration:underline;}
 
-  /* Signature: result card */
-  .result-card-wrap{
-    position:relative;
-    display:flex;justify-content:center;
+  /* ---------- SUBJECTS ---------- */
+  .subjects{padding:56px 0 20px;}
+  .sec-head{max-width:640px;margin-bottom:30px;}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .sec-head h2{font-size:clamp(24px,3vw,30px);margin-top:10px;line-height:1.2;}
+  .sec-head p{color:var(--muted);margin-top:10px;font-size:15px;}
+  .subject-row{
+    display:flex;gap:16px;overflow-x:auto;padding-bottom:16px;scroll-snap-type:x mandatory;
   }
-  .result-card{
-    width:100%;max-width:400px;
-    background:var(--white);
-    border:1px solid var(--line);
-    border-radius:6px;
-    box-shadow:var(--shadow);
-    padding:26px 26px 22px;
-    transform:rotate(3deg);
-    position:relative;
-    animation:float 6s ease-in-out infinite;
+  .subject-row::-webkit-scrollbar{height:6px;}
+  .subject-row::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
+  .subject-pill{
+    flex:0 0 118px;scroll-snap-align:start;text-align:center;
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 10px;transition:border-color .2s, transform .2s;
   }
-  @keyframes float{
-    0%,100%{transform:rotate(3deg) translateY(0px);}
-    50%{transform:rotate(2deg) translateY(-10px);}
+  .subject-pill:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .subject-pill .emoji{font-size:28px;margin-bottom:8px;}
+  .subject-pill span{font-size:12.5px;font-weight:600;color:var(--ink);}
+  .view-all-link{display:flex;justify-content:flex-end;margin-top:6px;}
+  .view-all-link a{font-size:13.5px;font-weight:600;color:var(--primary);}
+
+  /* ---------- ANNOUNCEMENT BANNERS ---------- */
+  .banners{padding:44px 0;background:var(--bg-soft);}
+  .banner-row{display:flex;gap:18px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory;}
+  .banner-row::-webkit-scrollbar{height:6px;}
+  .banner-row::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
+  .banner-card{
+    flex:0 0 300px;scroll-snap-align:start;border-radius:var(--radius);
+    padding:24px;color:#fff;position:relative;overflow:hidden;min-height:150px;
+    display:flex;flex-direction:column;justify-content:flex-end;
   }
-  .result-card .rc-head{
-    display:flex;justify-content:space-between;align-items:flex-start;
-    border-bottom:2px dashed var(--line);
-    padding-bottom:14px;margin-bottom:14px;
+  .banner-card::before{
+    content:'';position:absolute;inset:0;opacity:.5;
+    background:repeating-linear-gradient(120deg, rgba(255,255,255,.08) 0 2px, transparent 2px 20px);
   }
-  .result-card .rc-head .rc-title{
-    font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(23,34,59,.5);
-  }
-  .result-card .rc-head h4{font-family:var(--font-display);font-size:19px;margin-top:4px;}
-  .rc-roll{font-family:var(--font-mono);font-size:11px;color:rgba(23,34,59,.5);text-align:right;}
-  .rc-row{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:9px 0;border-bottom:1px solid var(--line);
-    font-size:14px;
-  }
-  .rc-row:last-of-type{border-bottom:none;}
-  .rc-row .subj{color:rgba(23,34,59,.75);}
-  .rc-row .marks{font-family:var(--font-mono);font-weight:700;color:var(--peepal);}
-  .rc-total{
-    display:flex;justify-content:space-between;align-items:center;
-    margin-top:14px;padding-top:14px;border-top:2px solid var(--ink);
-    font-family:var(--font-mono);font-weight:700;font-size:16px;
-  }
-  .stamp{
-    position:absolute;top:-18px;right:-14px;
-    width:78px;height:78px;border-radius:50%;
-    background:var(--marigold);
-    display:flex;align-items:center;justify-content:center;
-    transform:rotate(-16deg);
-    box-shadow:0 8px 20px rgba(232,161,59,.5);
-    border:2px dashed var(--indigo-deep);
-  }
-  .stamp span{
-    font-family:var(--font-mono);font-size:11px;font-weight:700;
-    text-transform:uppercase;color:var(--indigo-deep);text-align:center;line-height:1.2;letter-spacing:.03em;
-  }
+  .banner-card h4{color:#fff;font-size:17px;margin-bottom:6px;position:relative;}
+  .banner-card p{font-size:13px;color:rgba(255,255,255,.85);position:relative;}
+  .b1{background:linear-gradient(135deg,var(--primary),#1E5FCB);}
+  .b2{background:linear-gradient(135deg,var(--green),#2FA968);}
+  .b3{background:linear-gradient(135deg,var(--accent-deep),var(--accent));}
 
   /* ---------- STATS STRIP ---------- */
-  .stats{
-    background:var(--indigo);
-    color:var(--paper);
-    padding:36px 0;
-  }
-  .stats .wrap{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
-  }
-  .stat-item{text-align:center;border-right:1px solid rgba(251,245,231,0.14);}
+  .stats{background:var(--primary);color:#fff;padding:34px 0;}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .stat-item{text-align:center;border-right:1px solid rgba(255,255,255,.16);}
   .stat-item:last-child{border-right:none;}
-  .stat-item .num{
-    font-family:var(--font-mono);font-size:clamp(24px,3vw,34px);font-weight:700;color:var(--marigold);
-  }
-  .stat-item .lab{font-size:12.5px;color:rgba(251,245,231,0.65);margin-top:4px;letter-spacing:.02em;}
+  .stat-item .num{font-family:var(--font-head);font-size:clamp(22px,2.8vw,30px);font-weight:800;color:var(--accent);}
+  .stat-item .lab{font-size:12px;color:rgba(255,255,255,.75);margin-top:4px;}
 
-  /* ---------- SECTION shared ---------- */
-  section{padding:96px 0;}
-  .sec-head{max-width:620px;margin-bottom:52px;}
-  .sec-head h2{font-size:clamp(28px,3.4vw,40px);margin-top:14px;line-height:1.14;}
-  .sec-head p{color:rgba(23,34,59,.68);margin-top:14px;font-size:16px;}
+  /* ---------- GRADE TABS ---------- */
+  .grades{padding:60px 0;}
+  .tab-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px;}
+  .tab-btn{
+    padding:10px 22px;border-radius:30px;border:1.5px solid var(--line);
+    font-weight:600;font-size:14px;color:var(--muted);background:#fff;
+  }
+  .tab-btn.active{background:var(--primary);border-color:var(--primary);color:#fff;}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+  .grade-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .grade-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;
+    transition:box-shadow .2s, transform .2s;
+  }
+  .grade-card:hover{box-shadow:var(--shadow);transform:translateY(-3px);}
+  .grade-card .tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent-deep);}
+  .grade-card h4{font-size:16px;margin:8px 0 6px;}
+  .grade-card p{font-size:13px;color:var(--muted);}
 
-  /* ---------- COURSES ---------- */
-  .courses-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  /* ---------- BOARDS / EXAMS ---------- */
+  .boards{background:var(--bg-soft);padding:60px 0;}
+  .board-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .board-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 20px;text-align:center;
   }
-  .course-card{
-    background:var(--white);
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:30px 26px;
-    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-    position:relative;
-    overflow:hidden;
-  }
-  .course-card:hover{
-    transform:translateY(-6px);
-    box-shadow:var(--shadow);
-    border-color:transparent;
-  }
-  .course-card .tag{
-    font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;
-    color:var(--marigold-deep);font-weight:700;
-  }
-  .course-card h3{font-size:21px;margin:10px 0 8px;}
-  .course-card p{font-size:14.5px;color:rgba(23,34,59,.65);margin-bottom:18px;}
-  .course-card .meta{
-    display:flex;justify-content:space-between;align-items:center;
-    padding-top:16px;border-top:1px solid var(--line);
-    font-size:13px;color:rgba(23,34,59,.55);
-  }
-  .course-card .meta b{color:var(--peepal);font-family:var(--font-mono);}
-
-  /* ---------- WHY US ---------- */
-  .why{background:var(--paper-dim);}
-  .why-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:26px;
-  }
-  .why-item .icon{
-    width:52px;height:52px;border-radius:50%;
-    background:var(--indigo);
+  .board-badge{
+    width:56px;height:56px;border-radius:50%;margin:0 auto 14px;
     display:flex;align-items:center;justify-content:center;
-    margin-bottom:18px;
+    font-family:var(--font-head);font-weight:800;color:#fff;font-size:15px;
+    background:linear-gradient(135deg,var(--primary),#1E5FCB);
   }
-  .why-item .icon svg{width:24px;height:24px;stroke:var(--marigold);}
-  .why-item h3{font-size:18px;margin-bottom:8px;}
-  .why-item p{font-size:14px;color:rgba(23,34,59,.65);}
+  .board-card h4{font-size:15.5px;margin-bottom:4px;}
+  .board-card p{font-size:12.5px;color:var(--muted);margin-bottom:14px;}
+  .board-card a{font-size:13px;font-weight:600;color:var(--primary);}
 
-  /* ---------- RESULTS / TOPPERS ---------- */
-  .toppers-scroll{
-    display:flex;gap:20px;overflow-x:auto;padding-bottom:14px;
-    scroll-snap-type:x mandatory;
+  /* ---------- FOCUS AREAS ---------- */
+  .focus{padding:60px 0;}
+  .focus-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .focus-card{
+    border:1px solid var(--line);border-radius:var(--radius);padding:26px;
+    transition:box-shadow .2s, transform .2s;
   }
+  .focus-card:hover{box-shadow:var(--shadow);transform:translateY(-3px);}
+  .focus-card .ic{
+    width:48px;height:48px;border-radius:10px;background:var(--primary-soft);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:22px;
+  }
+  .focus-card h3{font-size:16.5px;margin-bottom:8px;}
+  .focus-card p{font-size:13.5px;color:var(--muted);margin-bottom:12px;}
+  .focus-card .more{font-size:13px;font-weight:600;color:var(--primary);}
+
+  /* ---------- SUCCESS STORIES ---------- */
+  .results{background:var(--bg-soft);padding:60px 0;}
+  .toppers-scroll{display:flex;gap:18px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory;}
   .toppers-scroll::-webkit-scrollbar{height:6px;}
   .toppers-scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
   .topper-card{
-    flex:0 0 240px;
-    scroll-snap-align:start;
-    background:var(--white);
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:22px;
-    text-align:center;
+    flex:0 0 220px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);
+    border-radius:var(--radius);padding:22px;text-align:center;
   }
   .topper-avatar{
-    width:64px;height:64px;border-radius:50%;
-    margin:0 auto 14px;
-    background:linear-gradient(135deg,var(--marigold),var(--peepal));
+    width:60px;height:60px;border-radius:50%;margin:0 auto 12px;
+    background:linear-gradient(135deg,var(--accent),var(--green));
     display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-display);font-weight:700;color:var(--white);font-size:22px;
+    font-family:var(--font-head);font-weight:700;color:#fff;font-size:19px;
   }
-  .topper-card h4{font-size:16px;margin-bottom:2px;}
-  .topper-card .exam{font-size:12.5px;color:rgba(23,34,59,.5);margin-bottom:10px;}
-  .topper-card .score{
-    font-family:var(--font-mono);font-weight:700;color:var(--peepal);font-size:19px;
-  }
+  .topper-card h4{font-size:15px;margin-bottom:2px;}
+  .topper-card .exam{font-size:12px;color:var(--muted);margin-bottom:8px;}
+  .topper-card .score{font-family:var(--font-head);font-weight:800;color:var(--green);font-size:18px;}
 
   /* ---------- TESTIMONIALS ---------- */
-  .testi{background:var(--indigo-deep);color:var(--paper);}
-  .testi .sec-head p{color:rgba(251,245,231,.6);}
-  .testi .sec-head h2{color:var(--paper);}
-  .testi .eyebrow{color:var(--marigold);}
-  .testi .eyebrow::before{background:var(--marigold);}
-  .testi-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
-  }
-  .testi-card{
-    background:rgba(251,245,231,0.05);
-    border:1px solid rgba(251,245,231,0.12);
-    border-radius:6px;padding:28px;
-  }
-  .testi-card .quote{font-size:15px;line-height:1.65;color:rgba(251,245,231,.85);margin-bottom:20px;}
+  .testi{padding:60px 0;}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .testi-card{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:#fff;}
+  .stars{color:var(--accent);font-size:13px;margin-bottom:12px;letter-spacing:2px;}
+  .testi-card .quote{font-size:14px;line-height:1.65;color:var(--ink);margin-bottom:18px;}
   .testi-card .who{display:flex;align-items:center;gap:12px;}
-  .testi-card .who-avatar{
-    width:40px;height:40px;border-radius:50%;background:var(--marigold);
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-mono);font-weight:700;color:var(--indigo-deep);font-size:14px;
+  .who-avatar{
+    width:38px;height:38px;border-radius:50%;background:var(--primary-soft);color:var(--primary);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;
   }
-  .testi-card .who-name{font-size:14px;font-weight:600;}
-  .testi-card .who-role{font-size:12px;color:rgba(251,245,231,.5);}
+  .who-name{font-size:13.5px;font-weight:700;}
+  .who-role{font-size:12px;color:var(--muted);}
 
-  /* ---------- CTA BAND ---------- */
-  .cta-band{
-    background:var(--marigold);
-    padding:64px 0;
-    position:relative;
-    overflow:hidden;
-  }
-  .cta-band::before{
-    content:'';position:absolute;inset:0;
-    background:repeating-linear-gradient(115deg, rgba(23,34,59,0.05) 0 2px, transparent 2px 26px);
-  }
-  .cta-content{
-    display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;
-    position:relative;
-  }
-  .cta-content h2{font-size:clamp(26px,3vw,34px);color:var(--indigo-deep);max-width:520px;}
-  .cta-content .btn-primary{background:var(--indigo-deep);color:var(--paper);box-shadow:0 10px 24px rgba(15,25,48,.3);}
-  .cta-content .btn-primary:hover{background:var(--ink);}
+  /* ---------- CTA / ACCESS BAND ---------- */
+  .cta-band{background:linear-gradient(120deg,var(--primary),var(--primary-deep));padding:56px 0;color:#fff;}
+  .cta-inner{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;}
+  .cta-inner h2{color:#fff;font-size:clamp(22px,2.8vw,28px);max-width:480px;}
+  .cta-points{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px;font-size:13px;color:rgba(255,255,255,.85);}
+  .cta-points span{display:flex;align-items:center;gap:6px;}
+  .cta-points span::before{content:'✓';color:var(--accent);font-weight:700;}
+  .cta-actions{display:flex;gap:12px;flex-wrap:wrap;}
 
   /* ---------- FOOTER ---------- */
-  footer{background:var(--indigo-deep);color:rgba(251,245,231,.7);padding:64px 0 28px;}
+  footer{background:#0B1A33;color:rgba(255,255,255,.68);padding:56px 0 24px;}
   .foot-grid{
-    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;
-    padding-bottom:44px;border-bottom:1px solid rgba(251,245,231,.1);
+    display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px;
+    padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.1);
   }
-  .foot-brand .logo{color:var(--paper);}
-  .foot-brand p{font-size:14px;margin-top:14px;max-width:280px;color:rgba(251,245,231,.55);}
-  .foot-col h5{
-    font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;
-    color:var(--marigold);margin-bottom:16px;
-  }
-  .foot-col a{display:block;font-size:14px;margin-bottom:10px;color:rgba(251,245,231,.65);transition:color .2s;}
-  .foot-col a:hover{color:var(--paper);}
-  .foot-bottom{
-    display:flex;justify-content:space-between;align-items:center;padding-top:26px;
-    font-size:13px;color:rgba(251,245,231,.45);flex-wrap:wrap;gap:12px;
-  }
+  .foot-brand .logo{color:#fff;}
+  .foot-brand p{font-size:13.5px;margin-top:14px;max-width:280px;color:rgba(255,255,255,.55);}
+  .foot-col h5{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:14px;}
+  .foot-col a{display:block;font-size:13.5px;margin-bottom:10px;color:rgba(255,255,255,.65);}
+  .foot-col a:hover{color:#fff;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:22px;font-size:12.5px;color:rgba(255,255,255,.45);flex-wrap:wrap;gap:10px;}
 
   /* ---------- RESPONSIVE ---------- */
-  @media (max-width:920px){
+  @media (max-width:960px){
     .nav-links{display:none;}
     .burger{display:flex;}
-    .hero-grid{grid-template-columns:1fr;}
-    .result-card-wrap{margin-top:20px;}
-    .stats .wrap{grid-template-columns:repeat(2,1fr);row-gap:24px;}
-    .stat-item:nth-child(2){border-right:none;}
-    .courses-grid{grid-template-columns:repeat(2,1fr);}
-    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .quick-grid{grid-template-columns:repeat(2,1fr);}
+    .grade-grid{grid-template-columns:repeat(2,1fr);}
+    .board-grid{grid-template-columns:repeat(2,1fr);}
+    .focus-grid{grid-template-columns:repeat(2,1fr);}
     .testi-grid{grid-template-columns:1fr;}
-    .foot-grid{grid-template-columns:1fr 1fr;gap:32px;}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:28px;}
+    .util-left span{display:none;}
   }
   @media (max-width:600px){
-    section{padding:64px 0;}
-    .courses-grid{grid-template-columns:1fr;}
-    .why-grid{grid-template-columns:1fr;}
+    .quick-grid{grid-template-columns:1fr;}
+    .grade-grid{grid-template-columns:1fr;}
+    .board-grid{grid-template-columns:1fr;}
+    .focus-grid{grid-template-columns:1fr;}
+    .stats .wrap{grid-template-columns:repeat(2,1fr);row-gap:20px;}
     .foot-grid{grid-template-columns:1fr;}
-    .cta-content{flex-direction:column;align-items:flex-start;}
-    .hero-actions .btn{width:100%;}
+    .cta-inner{flex-direction:column;align-items:flex-start;}
   }
-  @media (prefers-reduced-motion: reduce){
-    .result-card{animation:none;}
-    *{transition:none !important;}
-  }
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;}}
 </style>
 </head>
 <body>
+
+<div class="util-bar">
+  <div class="wrap">
+    <div class="util-left"><span>IndiaEdu Academy — A Free Learning Platform for Classes 9 to 12</span></div>
+    <div class="util-right">
+      <a href="#" id="sitemapLink">Site Map</a>
+      <div class="text-size">
+        <button id="decreaseText" aria-label="Decrease text size">A-</button>
+        <button id="resetText" aria-label="Reset text size">A</button>
+        <button id="increaseText" aria-label="Increase text size">A+</button>
+      </div>
+      <a href="#courses">EN</a>
+    </div>
+  </div>
+</div>
 
 <header>
   <nav class="wrap">
     <div class="logo"><span class="mark">IE</span> IndiaEdu Academy</div>
     <ul class="nav-links">
       <li><a href="#courses">Subjects</a></li>
+      <li><a href="#grades">Grades</a></li>
       <li><a href="#why">Why Us</a></li>
       <li><a href="#results">Success Stories</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-cta">
+      <a href="#contact" class="btn btn-outline">Login / Register</a>
       <a href="#contact" class="btn btn-primary">Start Learning Free</a>
     </div>
     <button class="burger" aria-label="menu"><span></span><span></span><span></span></button>
   </nav>
 </header>
 
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow">Free Learning Resources · Class 9 to 12</div>
-      <h1>Complete learning, right at your <em>fingertips</em>.</h1>
-      <p class="lead">IndiaEdu Academy brings subject-wise notes, MCQ quizzes, video lectures, downloadable PDFs, PPTs and mind maps together in one place — so you understand a topic, not just skim it. Join the learning revolution today.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Start Learning Free</a>
-        <a href="#courses" class="btn btn-ghost">Explore Subjects</a>
+<section class="quick">
+  <div class="wrap">
+    <div class="quick-head">
+      <div class="eyebrow" style="justify-content:center">Free Learning Resources · Class 9 to 12</div>
+      <h1>Complete learning, right at your fingertips</h1>
+      <p>Subject-wise notes, MCQ quizzes, video lectures, downloadable PDFs, PPTs and mind maps — all in one free platform. Join the learning revolution today.</p>
+    </div>
+    <div class="quick-grid">
+      <div class="quick-card">
+        <div class="ic" style="background:var(--primary-soft);">📘</div>
+        <h3>Notes</h3>
+        <a href="#courses">View All Notes →</a>
       </div>
-      <div class="hero-trust">
-        <div><div class="n">500+</div><div class="l">Notes & PDFs</div></div>
-        <div><div class="n">1,200+</div><div class="l">MCQ Quizzes</div></div>
-        <div><div class="n">80+</div><div class="l">Video Lectures</div></div>
-        <div><div class="n">12</div><div class="l">Subjects Covered</div></div>
+      <div class="quick-card">
+        <div class="ic" style="background:var(--green-soft);">🎬</div>
+        <h3>Video Lectures</h3>
+        <a href="#courses">Watch Videos →</a>
+      </div>
+      <div class="quick-card">
+        <div class="ic" style="background:#FDEEDB;">📝</div>
+        <h3>MCQ Quizzes</h3>
+        <a href="#courses">Try a Quiz →</a>
+      </div>
+      <div class="quick-card">
+        <div class="ic" style="background:#EDE9FE;">🧠</div>
+        <h3>Mind Maps</h3>
+        <a href="#courses">Explore Maps →</a>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="result-card-wrap">
-      <div class="result-card">
-        <div class="stamp"><span>Quiz<br>Cleared</span></div>
-        <div class="rc-head">
-          <div>
-            <div class="rc-title">IndiaEdu Academy</div>
-            <h4>Quiz Report</h4>
-          </div>
-          <div class="rc-roll">Topic: Cell Biology<br>Attempt: MCQ-118</div>
-        </div>
-        <div class="rc-row"><span class="subj">Notes Read</span><span class="marks">Complete</span></div>
-        <div class="rc-row"><span class="subj">Video Lecture</span><span class="marks">Watched</span></div>
-        <div class="rc-row"><span class="subj">MCQ Quiz</span><span class="marks">18 / 20</span></div>
-        <div class="rc-row"><span class="subj">Mind Map</span><span class="marks">Saved</span></div>
-        <div class="rc-total"><span>Score</span><span>90%</span></div>
-      </div>
+<section class="subjects">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Browse by Subject</div>
+      <h2>Jump straight to your subject</h2>
+    </div>
+    <div class="subject-row">
+      <div class="subject-pill"><div class="emoji">📐</div><span>Mathematics</span></div>
+      <div class="subject-pill"><div class="emoji">🔬</div><span>Science</span></div>
+      <div class="subject-pill"><div class="emoji">🇬🇧</div><span>English</span></div>
+      <div class="subject-pill"><div class="emoji">🇮🇳</div><span>Hindi</span></div>
+      <div class="subject-pill"><div class="emoji">🌍</div><span>Social Science</span></div>
+      <div class="subject-pill"><div class="emoji">💻</div><span>Computer Science</span></div>
+      <div class="subject-pill"><div class="emoji">⚛️</div><span>Physics</span></div>
+      <div class="subject-pill"><div class="emoji">🧪</div><span>Chemistry</span></div>
+      <div class="subject-pill"><div class="emoji">🌱</div><span>Biology</span></div>
+      <div class="subject-pill"><div class="emoji">📊</div><span>Economics</span></div>
+    </div>
+    <div class="view-all-link"><a href="#courses">View All Subjects →</a></div>
+  </div>
+</section>
+
+<section class="banners" id="courses">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What's Inside the App</div>
+      <h2>Six ways to learn any topic properly</h2>
+      <p>Every subject comes packed with these formats, so you can read, watch, revise, and test yourself without switching apps.</p>
+    </div>
+    <div class="banner-row">
+      <div class="banner-card b1"><h4>📘 Subject-wise Notes</h4><p>Exam-ready notes, organised chapter by chapter — free for all subjects.</p></div>
+      <div class="banner-card b2"><h4>📝 MCQ Quizzes</h4><p>1,200+ chapter-wise quiz questions with instant scoring.</p></div>
+      <div class="banner-card b1"><h4>🎬 Video Lectures</h4><p>80+ short, focused lectures explaining the tricky parts of a chapter.</p></div>
+      <div class="banner-card b3"><h4>📥 Downloadable PDFs</h4><p>500+ notes and worksheets you can save and study offline.</p></div>
+      <div class="banner-card b2"><h4>📊 Ready-made PPTs</h4><p>Slide decks for every chapter — great for revision or class presentations.</p></div>
+      <div class="banner-card b3"><h4>🧠 Mind Maps</h4><p>One-page visual maps connecting every concept — built for fast revision.</p></div>
     </div>
   </div>
 </section>
@@ -459,90 +407,109 @@
     <div class="stat-item"><div class="num">500+</div><div class="lab">Notes & Study PDFs</div></div>
     <div class="stat-item"><div class="num">1,200+</div><div class="lab">MCQ Quiz Questions</div></div>
     <div class="stat-item"><div class="num">80+</div><div class="lab">Video Lectures</div></div>
-    <div class="stat-item"><div class="num">4,200+</div><div class="lab">Learners Using the App</div></div>
+    <div class="stat-item"><div class="num">4,200+</div><div class="lab">Learners Using the Platform</div></div>
   </div>
 </div>
 
-<section id="courses">
+<section class="grades" id="grades">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">What's Inside the App</div>
-      <h2>Six ways to learn any topic properly</h2>
-      <p>Every subject on IndiaEdu Academy comes packed with these six formats, so you can read, watch, revise, and test yourself without switching apps.</p>
+      <div class="eyebrow">Browse by Grade</div>
+      <h2>Pick your class to see what's covered</h2>
     </div>
-    <div class="courses-grid">
-      <div class="course-card">
-        <div class="tag">Read</div>
-        <h3>Subject-wise Notes</h3>
-        <p>Clear, exam-ready notes organized chapter by chapter, written to be read in minutes, not hours.</p>
-        <div class="meta"><span>All subjects</span><b>Free</b></div>
+    <div class="tab-bar" id="gradeTabs">
+      <button class="tab-btn active" data-tab="c9">Class 9</button>
+      <button class="tab-btn" data-tab="c10">Class 10</button>
+      <button class="tab-btn" data-tab="c11">Class 11</button>
+      <button class="tab-btn" data-tab="c12">Class 12</button>
+    </div>
+
+    <div class="tab-panel active" id="c9">
+      <div class="grade-grid">
+        <div class="grade-card"><div class="tag">Notes</div><h4>Class 9 Notes</h4><p>Chapter-wise notes for Maths, Science, English, Hindi & Social Science.</p></div>
+        <div class="grade-card"><div class="tag">MCQ</div><h4>Class 9 Quizzes</h4><p>Practice quizzes for every chapter with instant results.</p></div>
+        <div class="grade-card"><div class="tag">Videos</div><h4>Class 9 Lectures</h4><p>Short video explanations for the toughest topics.</p></div>
+        <div class="grade-card"><div class="tag">PDFs</div><h4>Class 9 Downloads</h4><p>Offline-ready PDFs of notes and worksheets.</p></div>
       </div>
-      <div class="course-card">
-        <div class="tag">Practice</div>
-        <h3>MCQ Quizzes</h3>
-        <p>Chapter-wise multiple choice quizzes with instant scoring, so you know exactly where you stand.</p>
-        <div class="meta"><span>1,200+ questions</span><b>Free</b></div>
+    </div>
+    <div class="tab-panel" id="c10">
+      <div class="grade-grid">
+        <div class="grade-card"><div class="tag">Notes</div><h4>Class 10 Notes</h4><p>Board-exam focused notes covering the full NCERT/UP Board syllabus.</p></div>
+        <div class="grade-card"><div class="tag">MCQ</div><h4>Class 10 Quizzes</h4><p>Board-pattern MCQs to build exam confidence.</p></div>
+        <div class="grade-card"><div class="tag">Videos</div><h4>Class 10 Lectures</h4><p>Concept videos aligned to the board exam pattern.</p></div>
+        <div class="grade-card"><div class="tag">Mind Maps</div><h4>Class 10 Revision</h4><p>One-page maps for last-minute board exam revision.</p></div>
       </div>
-      <div class="course-card">
-        <div class="tag">Watch</div>
-        <h3>Video Lectures</h3>
-        <p>Short, focused video lectures that explain the tricky parts of a chapter without wasting time.</p>
-        <div class="meta"><span>80+ lectures</span><b>Free</b></div>
+    </div>
+    <div class="tab-panel" id="c11">
+      <div class="grade-grid">
+        <div class="grade-card"><div class="tag">Notes</div><h4>Class 11 Notes</h4><p>Stream-wise notes for Science, Commerce and Arts subjects.</p></div>
+        <div class="grade-card"><div class="tag">MCQ</div><h4>Class 11 Quizzes</h4><p>Concept-check quizzes for Physics, Chemistry, Maths & Biology.</p></div>
+        <div class="grade-card"><div class="tag">Videos</div><h4>Class 11 Lectures</h4><p>Foundation lectures that build up to competitive-exam level.</p></div>
+        <div class="grade-card"><div class="tag">PPTs</div><h4>Class 11 Slides</h4><p>Ready slide decks for quick classroom-style revision.</p></div>
       </div>
-      <div class="course-card">
-        <div class="tag">Download</div>
-        <h3>PDFs</h3>
-        <p>Save any note or worksheet as a PDF and study offline, whenever your data or signal runs out.</p>
-        <div class="meta"><span>500+ files</span><b>Free</b></div>
-      </div>
-      <div class="course-card">
-        <div class="tag">Present</div>
-        <h3>PPTs</h3>
-        <p>Ready-made slide decks for every chapter — useful for quick revision or classroom presentations.</p>
-        <div class="meta"><span>All subjects</span><b>Free</b></div>
-      </div>
-      <div class="course-card">
-        <div class="tag">Revise</div>
-        <h3>Mind Maps</h3>
-        <p>Visual mind maps that connect every concept in a chapter, built for fast last-minute revision.</p>
-        <div class="meta"><span>All subjects</span><b>Free</b></div>
+    </div>
+    <div class="tab-panel" id="c12">
+      <div class="grade-grid">
+        <div class="grade-card"><div class="tag">Notes</div><h4>Class 12 Notes</h4><p>Board and competitive-exam focused notes, chapter by chapter.</p></div>
+        <div class="grade-card"><div class="tag">MCQ</div><h4>Class 12 Quizzes</h4><p>JEE/NEET-style MCQ practice alongside board-pattern quizzes.</p></div>
+        <div class="grade-card"><div class="tag">Videos</div><h4>Class 12 Lectures</h4><p>In-depth video lectures for every core subject.</p></div>
+        <div class="grade-card"><div class="tag">Mind Maps</div><h4>Class 12 Revision</h4><p>Fast, visual revision maps for the final stretch before exams.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="why" class="why">
+<section class="boards">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Prepare For</div>
+      <h2>Aligned with the exams that matter</h2>
+    </div>
+    <div class="board-grid">
+      <div class="board-card"><div class="board-badge">UP</div><h4>UP Board</h4><p>Class 9–12 syllabus coverage</p><a href="#courses">Explore Content →</a></div>
+      <div class="board-card"><div class="board-badge">CB</div><h4>CBSE</h4><p>NCERT-aligned notes & quizzes</p><a href="#courses">Explore Content →</a></div>
+      <div class="board-card"><div class="board-badge">JEE</div><h4>JEE Main</h4><p>Physics, Chemistry & Maths practice</p><a href="#courses">Explore Content →</a></div>
+      <div class="board-card"><div class="board-badge">NEET</div><h4>NEET</h4><p>Biology, Physics & Chemistry prep</p><a href="#courses">Explore Content →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="focus" id="why">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">Why Students Choose Us</div>
       <h2>Built for how students actually revise</h2>
     </div>
-    <div class="why-grid">
-      <div class="why-item">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="ic">⏰</div>
         <h3>Learn Anytime</h3>
         <p>Notes, videos and quizzes are open 24x7 — study at 6 AM before school or 11 PM before an exam.</p>
+        <a class="more" href="#courses">Learn More →</a>
       </div>
-      <div class="why-item">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+      <div class="focus-card">
+        <div class="ic">✅</div>
         <h3>Instant Quiz Scoring</h3>
         <p>Every MCQ quiz scores itself the moment you submit, so you find your weak chapters immediately.</p>
+        <a class="more" href="#courses">Learn More →</a>
       </div>
-      <div class="why-item">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg></div>
+      <div class="focus-card">
+        <div class="ic">🧠</div>
         <h3>Visual Mind Maps</h3>
         <p>Every chapter is broken into a one-page mind map — the fastest way to revise before an exam.</p>
+        <a class="more" href="#courses">Learn More →</a>
       </div>
-      <div class="why-item">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div>
+      <div class="focus-card">
+        <div class="ic">🎓</div>
         <h3>Completely Free</h3>
         <p>Notes, quizzes, videos, PDFs, PPTs and mind maps — all free to access, no hidden subscription.</p>
+        <a class="more" href="#courses">Learn More →</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="results">
+<section class="results" id="results">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">Success Stories</div>
@@ -560,22 +527,25 @@
   </div>
 </section>
 
-<section id="testimonials" class="testi">
+<section class="testi" id="testimonials">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">Learners Say</div>
+      <div class="eyebrow">Voices From Our Community</div>
       <h2>Trusted by students across the country</h2>
     </div>
     <div class="testi-grid">
       <div class="testi-card">
+        <div class="stars">★★★★★</div>
         <p class="quote">"I read the notes, then take the MCQ quiz right after — seeing my score instantly tells me exactly which chapter to go back to."</p>
         <div class="who"><div class="who-avatar">SM</div><div><div class="who-name">Sanya Mehta</div><div class="who-role">Class 10 student</div></div></div>
       </div>
       <div class="testi-card">
+        <div class="stars">★★★★★</div>
         <p class="quote">"The video lectures explain the tough parts in a few minutes. I keep the mind maps saved on my phone for the last hour before an exam."</p>
         <div class="who"><div class="who-avatar">NP</div><div><div class="who-name">Naveen Prasad</div><div class="who-role">Class 12 student</div></div></div>
       </div>
       <div class="testi-card">
+        <div class="stars">★★★★★</div>
         <p class="quote">"I download the PDFs at home when the internet is slow, and use the PPTs to revise fast before every school test."</p>
         <div class="who"><div class="who-avatar">RD</div><div><div class="who-name">Riya Dubey</div><div class="who-role">Class 9 student</div></div></div>
       </div>
@@ -584,9 +554,19 @@
 </section>
 
 <section class="cta-band" id="contact">
-  <div class="wrap cta-content">
-    <h2>Join the learning revolution today — it's free to start.</h2>
-    <a href="mailto:hello@indiaeduacademy.in" class="btn btn-primary">Start Learning Free</a>
+  <div class="wrap cta-inner">
+    <div>
+      <h2>Join the learning revolution today — it's free to start.</h2>
+      <div class="cta-points">
+        <span>Works on low bandwidth</span>
+        <span>Offline PDF downloads</span>
+        <span>No hidden subscription</span>
+      </div>
+    </div>
+    <div class="cta-actions">
+      <a href="mailto:hello@indiaeduacademy.in" class="btn btn-white">Start Learning Free</a>
+      <a href="#courses" class="btn btn-outline" style="border-color:#fff;color:#fff;">Explore Subjects</a>
+    </div>
   </div>
 </section>
 
@@ -594,7 +574,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <div class="logo"><span class="mark">IE</span> IndiaEdu Academy</div>
+        <div class="logo"><span class="mark" style="background:var(--accent);">IE</span> IndiaEdu Academy</div>
         <p>Complete learning at your fingertips — subject-wise notes, MCQ quizzes, video lectures, PDFs, PPTs and mind maps, all in one free education platform.</p>
       </div>
       <div class="foot-col">
@@ -621,10 +601,49 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 IndiaEdu Academy. All rights reserved.</span>
-      <span>Education website · Join the learning revolution.</span>
+      <span>Education platform · Join the learning revolution.</span>
     </div>
   </div>
 </footer>
+
+<script>
+  // Grade tabs
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Accessibility text size controls
+  let fontScale = 100;
+  const root = document.documentElement;
+  document.getElementById('increaseText').addEventListener('click', () => {
+    fontScale = Math.min(fontScale + 10, 130);
+    root.style.fontSize = fontScale + '%';
+  });
+  document.getElementById('decreaseText').addEventListener('click', () => {
+    fontScale = Math.max(fontScale - 10, 80);
+    root.style.fontSize = fontScale + '%';
+  });
+  document.getElementById('resetText').addEventListener('click', () => {
+    fontScale = 100;
+    root.style.fontSize = '100%';
+  });
+
+  // Mobile burger menu (simple toggle of nav links visibility)
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
+  burger.addEventListener('click', () => {
+    const isOpen = navLinks.style.display === 'flex';
+    navLinks.style.display = isOpen ? 'none' : 'flex';
+    navLinks.style.cssText += isOpen ? '' : 'position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;border-bottom:1px solid var(--line);gap:16px;';
+  });
+</script>
 
 </body>
 </html>
